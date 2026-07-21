@@ -1,14 +1,6 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+=import { createFileRoute, Link } from "@tanstack/react-router";
 import {
-  ArrowRight,
-  Target,
-  Heart,
-  Zap,
-  Shield,
-  ChevronRight,
-  Users,
-  Mail,
-  Play,
+  ArrowRight, Target, Heart, Zap, Shield, ChevronRight, Users, Mail,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -24,11 +16,7 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Devsheel Football Academy — Grassroots football, done properly" },
-      {
-        name: "description",
-        content:
-          "A new football academy training the next generation across four age groups: U10, U12, U15 and U18.",
-      },
+      { name: "description", content: "A new football academy training the next generation across four age groups: U10, U12, U15 and U18. Sessions built on fundamentals, discipline, and a love of the game." },
     ],
   }),
   component: HomePage,
@@ -46,207 +34,137 @@ function HomePage() {
   );
 }
 
-/* ---------------- HERO (SAME BACKGROUND - MAXIMUM VISIBILITY) ---------------- */
+/* ---------------- HERO (ORIGINAL STYLE + VISIBILITY FIX) ---------------- */
 function Hero() {
   const scrollToTraining = () => {
     document.getElementById("training")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <section className="relative -mt-[76px] flex min-h-[85vh] items-center overflow-hidden pt-[76px] text-white">
-      {/* BACKGROUND LAYER */}
+    <section className="relative -mt-[76px] overflow-hidden pt-[76px] text-white">
       <div className="absolute inset-0 -z-10">
-        <img src={heroImg} alt="" className="h-full w-full object-cover" />
-
-        {/* THE "VISIBILITY" OVERLAYS */}
-        {/* 1. Global Darkener */}
-        <div className="absolute inset-0 bg-black/40" />
-
-        {/* 2. Left-to-Right Fade (Darker behind the text) */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
-
-        {/* 3. Your custom brand lines */}
-        <div className="absolute inset-0 pitch-lines opacity-20" />
+        <img src={heroImg} alt="" width={1920} height={1200} className="h-full w-full object-cover" />
+        
+        {/* IMPROVED VISIBILITY OVERLAY */}
+        <div className="absolute inset-0 bg-black/60" /> 
+        <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent" />
+        <div className="absolute inset-0 pitch-lines opacity-30" />
       </div>
 
-      <div className="mx-auto w-full max-w-7xl px-4 py-24 md:px-6">
-        <div className="max-w-4xl">
-          {/* Headline - Added Strong Drop Shadow */}
-          <h1 className="font-display text-6xl font-black uppercase italic leading-[0.9] tracking-tighter text-white drop-shadow-[0_5px_15px_rgba(0,0,0,0.5)] md:text-8xl lg:text-9xl">
-            Where the{" "}
-            <span className="text-gold drop-shadow-[0_0_20px_rgba(212,175,55,0.3)]">game</span>
-            <br />
-            begins<span className="text-gold">.</span>
-          </h1>
+      <div className="mx-auto max-w-5xl px-4 py-24 md:px-6 md:py-32">
+        {/* Heading: Original font, added shadow for visibility */}
+        <h1 className="font-display text-5xl uppercase leading-[0.95] text-white drop-shadow-[0_4px_10px_rgba(0,0,0,0.5)] md:text-7xl lg:text-8xl">
+          Where the <span className="shine-text">game</span><br />
+          begins.
+        </h1>
 
-          {/* Subtext - High Contrast White */}
-          <p className="mt-8 max-w-2xl text-lg font-bold leading-relaxed text-white drop-shadow-md md:text-xl">
-            Devsheel Football Academy is a young grassroots academy focused on the fundamentals —
-            first touch, movement, decision-making and the discipline that turns players into
-            teammates.
-          </p>
+        {/* Paragraph: Changed to pure white + strong shadow to make it pop */}
+        <p className="mt-6 max-w-2xl text-lg font-medium text-white drop-shadow-[0_2px_8px_rgba(0,0,0,1)] md:text-xl">
+          Devsheel Football Academy is a young grassroots academy focused on the fundamentals — first touch, movement, decision-making and the discipline that turns players into teammates. We train four age groups, one session at a time.
+        </p>
 
-          {/* Buttons */}
-          <div className="mt-10 flex flex-wrap items-center gap-4">
-            <Button
-              asChild
-              size="lg"
-              className="h-14 rounded-full bg-gold-gradient px-10 text-sm font-black uppercase tracking-widest text-ink shadow-2xl hover:scale-105 transition-transform"
-            >
-              <Link to={"/contact" as any}>
-                Join Now <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              onClick={scrollToTraining}
-              className="h-14 rounded-full border-white/40 bg-white/10 text-white backdrop-blur-md hover:bg-white/20"
-            >
-              View Programs
-            </Button>
-          </div>
+        <div className="mt-8 flex flex-wrap items-center gap-3">
+          <Button asChild size="lg" className="rounded-full bg-gold-gradient text-ink shadow-gold hover:brightness-110">
+            <Link to={"/contact" as any}>Contact <ArrowRight className="ml-2 h-4 w-4" /></Link>
+          </Button>
+          <Button
+            size="lg"
+            variant="outline"
+            onClick={scrollToTraining}
+            className="rounded-full border-white/40 bg-white/10 text-white backdrop-blur hover:bg-white/20 hover:text-white font-bold"
+          >
+            Programs
+          </Button>
         </div>
       </div>
     </section>
   );
 }
 
-/* ---------------- PILLARS (CLEAN & PRO) ---------------- */
+/* ---------------- PILLARS (ORIGINAL STYLE) ---------------- */
 function Pillars() {
   const pillars = [
-    {
-      icon: Target,
-      title: "Technical",
-      desc: "Ball mastery and first touch built through consistent, focused repetition.",
-    },
-    {
-      icon: Zap,
-      title: "Tactical",
-      desc: "Simple principles of play — positioning, decisions, and reading the game.",
-    },
-    {
-      icon: Heart,
-      title: "Physical",
-      desc: "Age-appropriate movement and coordination — never overloaded.",
-    },
-    {
-      icon: Shield,
-      title: "Mental",
-      desc: "Confidence, focus and respect for teammates and the game itself.",
-    },
+    { icon: Target, title: "Technical", desc: "Ball mastery, first touch and 1v1s built through consistent, focused repetition." },
+    { icon: Zap, title: "Tactical", desc: "Simple, age-appropriate principles of play — positioning, decisions, and reading the game." },
+    { icon: Heart, title: "Physical", desc: "Age-appropriate movement, coordination and conditioning — never overloaded." },
+    { icon: Shield, title: "Mental", desc: "Confidence, focus and respect for teammates, opponents and the game itself." },
   ];
-
   return (
     <section className="mx-auto max-w-7xl px-4 py-24 md:px-6">
-      <div className="grid gap-10 lg:grid-cols-2 lg:items-end">
+      <div className="grid gap-10 lg:grid-cols-[1fr_1.4fr] lg:items-end">
         <div>
-          <Badge className="mb-4 bg-zinc-100 text-zinc-900 font-bold uppercase tracking-widest">
-            Our approach
-          </Badge>
-          <h2 className="font-display text-5xl font-black uppercase italic leading-none tracking-tighter text-zinc-950 md:text-7xl">
-            Four pillars.
-            <br />
-            <span className="text-zinc-400">One footballer.</span>
+          <Badge className="mb-4 bg-primary/10 text-primary hover:bg-primary/15">Our approach</Badge>
+          <h2 className="font-display text-4xl uppercase leading-[0.95] md:text-6xl text-zinc-950">
+            Four pillars.<br /><span className="text-primary">One footballer.</span>
           </h2>
         </div>
-        <p className="max-w-md text-zinc-500 font-medium">
-          Every session is designed to develop the whole player — the athlete on the ball, and the
-          person off it.
+        <p className="max-w-xl text-muted-foreground">
+          Every session is designed to develop the whole player — not just the athlete on the ball, but the person off it. Hover any pillar to read a little more.
         </p>
       </div>
 
-      <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {pillars.map(({ icon: Icon, title, desc }) => (
-          <Card
-            key={title}
-            className="group border-zinc-100 bg-zinc-50/50 transition-all hover:-translate-y-2 hover:shadow-xl"
-          >
-            <CardContent className="p-8">
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-zinc-950 text-white transition-transform group-hover:scale-110">
-                <Icon className="h-6 w-6" />
-              </div>
-              <h3 className="mt-6 font-display text-2xl font-black uppercase italic text-zinc-950">
-                {title}
-              </h3>
-              <p className="mt-3 text-sm font-medium text-zinc-500">{desc}</p>
-            </CardContent>
-          </Card>
+          <HoverCard key={title} openDelay={80}>
+            <HoverCardTrigger asChild>
+              <Card className="group cursor-pointer overflow-hidden border-border transition hover:-translate-y-2 hover:border-primary/40 hover:shadow-lift">
+                <CardContent className="relative p-6">
+                  <div className="grid h-14 w-14 place-items-center rounded-2xl bg-primary/10 text-primary transition group-hover:scale-110">
+                    <Icon className="h-6 w-6" />
+                  </div>
+                  <h3 className="mt-5 font-display text-2xl uppercase text-zinc-950">{title}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground">{desc}</p>
+                </CardContent>
+              </Card>
+            </HoverCardTrigger>
+            <HoverCardContent className="w-72">
+              <p className="font-display text-lg uppercase text-primary">{title}</p>
+              <p className="mt-1 text-xs text-muted-foreground">Woven into every session across all four age groups.</p>
+            </HoverCardContent>
+          </HoverCard>
         ))}
       </div>
     </section>
   );
 }
 
-/* ---------------- TRAINING GROUPS ---------------- */
+/* ---------------- TRAINING GROUPS (ORIGINAL STYLE) ---------------- */
 function TrainingGroups() {
   const groups = [
-    {
-      tag: "U10",
-      title: "Under 10",
-      copy: "Coordination, ball familiarity and the love of the ball.",
-      focus: ["First touch", "Coordination", "Fun-led"],
-    },
-    {
-      tag: "U12",
-      title: "Under 12",
-      copy: "Team shape, passing patterns and shirt responsibility.",
-      focus: ["Passing", "Tactics", "Teamwork"],
-    },
-    {
-      tag: "U15",
-      title: "Under 15",
-      copy: "Tactical work, positional roles and physical development.",
-      focus: ["Positional", "Intelligence", "Fitness"],
-    },
-    {
-      tag: "U18",
-      title: "Under 18",
-      copy: "High intensity, tactical detail and adult football prep.",
-      focus: ["Detail", "Leadership", "Analysis"],
-    },
+    { tag: "U10", title: "Under 10", copy: "First steps in structured football. Coordination, ball familiarity and small-sided games.", focus: ["First touch", "Coordination", "Basic positioning", "Fun-led"] },
+    { tag: "U12", title: "Under 12", copy: "Building on the fundamentals. Introducing team shape and passing patterns.", focus: ["Passing", "Tactics", "Two-footed play", "Teamwork"] },
+    { tag: "U15", title: "Under 15", copy: "Bridging youth football and competitive play. Deeper tactical work.", focus: ["Positional roles", "Game intelligence", "Fitness", "Tournaments"] },
+    { tag: "U18", title: "Under 18", copy: "Preparing players for adult football. Higher intensity and tactical detail.", focus: ["Tactical detail", "Conditioning", "Analysis", "Leadership"] },
   ];
 
   return (
-    <section
-      id="training"
-      className="relative overflow-hidden bg-crimson-deep py-24 text-white scroll-mt-24"
-    >
-      <div className="absolute inset-0 bg-hero-gradient opacity-40" />
+    <section id="training" className="relative overflow-hidden bg-hero-gradient py-24 text-white scroll-mt-24">
+      <div className="absolute inset-0 pitch-lines opacity-30" aria-hidden />
+      <div className="absolute inset-0 bg-black/30" aria-hidden />
       <div className="relative mx-auto max-w-7xl px-4 md:px-6">
-        <h2 className="font-display text-5xl font-black uppercase italic tracking-tighter md:text-7xl">
-          Four age groups.
-          <br />
-          <span className="text-gold">One standard.</span>
-        </h2>
+        <div className="max-w-2xl">
+          <Badge className="mb-4 border-gold/40 bg-white/10 text-gold">Training groups</Badge>
+          <h2 className="font-display text-4xl uppercase leading-[0.95] md:text-6xl">
+            Four age groups.<br /><span className="shine-text">One standard.</span>
+          </h2>
+        </div>
 
-        <div className="mt-16 grid gap-6 md:grid-cols-2">
+        <div className="mt-12 grid gap-5 md:grid-cols-2">
           {groups.map((g) => (
-            <Card
-              key={g.tag}
-              className="group border-white/10 bg-white/5 backdrop-blur-2xl transition-all hover:bg-white/10"
-            >
-              <CardContent className="p-10">
-                <div className="flex items-center justify-between">
-                  <p className="font-display text-6xl font-black text-gold">{g.tag}</p>
-                  <Badge variant="outline" className="border-gold/50 text-gold">
-                    Age Group
-                  </Badge>
+            <Card key={g.tag} className="group border-white/10 bg-white/5 text-white backdrop-blur-xl transition hover:-translate-y-1 hover:border-gold/40">
+              <CardContent className="p-6 md:p-8">
+                <div className="flex items-baseline justify-between">
+                  <p className="font-display text-5xl text-gold">{g.tag}</p>
                 </div>
-                <h3 className="mt-6 font-display text-3xl font-black uppercase italic">
-                  {g.title}
-                </h3>
-                <p className="mt-4 text-white/60 font-medium">{g.copy}</p>
-                <div className="mt-8 flex flex-wrap gap-2">
+                <h3 className="mt-3 font-display text-2xl uppercase">{g.title}</h3>
+                <p className="mt-3 text-sm text-white/80">{g.copy}</p>
+                <ul className="mt-5 grid gap-2 sm:grid-cols-2">
                   {g.focus.map((f) => (
-                    <span
-                      key={f}
-                      className="rounded-full bg-white/10 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white"
-                    >
-                      {f}
-                    </span>
+                    <li key={f} className="flex items-center gap-2 text-sm text-white/85">
+                      <span className="h-1.5 w-1.5 rounded-full bg-gold" /> {f}
+                    </li>
                   ))}
-                </div>
+                </ul>
               </CardContent>
             </Card>
           ))}
@@ -256,41 +174,36 @@ function TrainingGroups() {
   );
 }
 
-/* ---------------- THE COACH ---------------- */
+/* ---------------- THE COACH (ORIGINAL STYLE) ---------------- */
 function TheCoach() {
   return (
     <section className="mx-auto max-w-7xl px-4 py-24 md:px-6">
-      <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
+      <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
         <div className="relative">
-          <div className="aspect-square overflow-hidden rounded-[3rem] bg-zinc-100 p-12">
-            <img
-              src={logo}
-              alt="Devsheel"
-              className="h-full w-full object-contain opacity-20 grayscale"
-            />
+          <div className="relative overflow-hidden rounded-3xl border border-border shadow-lift">
+            <div className="aspect-[4/5] w-full bg-zinc-100">
+              <div className="grid h-full w-full place-items-center">
+                <img src={logo} alt="Devsheel" className="h-32 w-auto opacity-20 grayscale" />
+              </div>
+            </div>
           </div>
-          <div className="absolute -bottom-6 -right-6 rounded-3xl bg-gold-gradient p-8 text-ink shadow-2xl">
-            <p className="text-[10px] font-black uppercase tracking-[0.3em]">Founder</p>
-            <p className="font-display text-3xl font-black uppercase italic">Head Coach</p>
+          <div className="absolute -bottom-5 -right-5 hidden rounded-2xl bg-gold-gradient px-5 py-3 text-ink shadow-gold md:block">
+            <p className="font-display text-xs uppercase tracking-widest">Founder</p>
+            <p className="font-display text-xl">Head Coach</p>
           </div>
         </div>
 
         <div>
-          <h2 className="font-display text-5xl font-black uppercase italic tracking-tighter text-zinc-950 md:text-7xl">
-            One coach.
-            <br />
-            <span className="text-zinc-400">Every session.</span>
+          <Badge className="mb-4 bg-primary/10 text-primary">The coach</Badge>
+          <h2 className="font-display text-4xl uppercase leading-[0.95] md:text-5xl text-zinc-950">
+            One coach.<br /><span className="text-primary">Every session.</span>
           </h2>
-          <p className="mt-8 text-lg font-medium leading-relaxed text-zinc-500">
-            The academy is run by a single coach — the founder. Every player is seen, every session
-            is led with intent, and no group is passed off to an assistant.
+          <p className="mt-5 text-muted-foreground">
+            The academy is run by the founder. That means every player is seen and every session is led with intent.
           </p>
-          <div className="mt-10">
-            <Button
-              asChild
-              className="h-14 rounded-full bg-zinc-950 px-10 text-white hover:bg-zinc-800"
-            >
-              <Link to={"/contact" as any}>Get in touch</Link>
+          <div className="mt-8">
+            <Button asChild className="rounded-full">
+              <Link to={"/contact" as any}>Get in touch <Mail className="ml-2 h-4 w-4" /></Link>
             </Button>
           </div>
         </div>
@@ -299,23 +212,20 @@ function TheCoach() {
   );
 }
 
-/* ---------------- FINAL CTA ---------------- */
+/* ---------------- CTA (ORIGINAL STYLE) ---------------- */
 function FinalCTA() {
   return (
-    <section className="relative overflow-hidden py-32">
+    <section className="relative overflow-hidden">
       <img src={pitchImg} alt="" className="absolute inset-0 h-full w-full object-cover" />
-      <div className="absolute inset-0 bg-black/70" />
-      <div className="relative mx-auto max-w-4xl px-4 text-center text-white md:px-6">
-        <h2 className="font-display text-6xl font-black uppercase italic tracking-tighter md:text-8xl">
-          Come and <span className="text-gold">train.</span>
+      <div className="absolute inset-0 bg-hero-gradient opacity-95" />
+      <div className="absolute inset-0 bg-black/40" />
+      <div className="relative mx-auto max-w-4xl px-4 py-24 text-center text-white md:px-6">
+        <h2 className="font-display text-4xl uppercase leading-[0.95] md:text-6xl">
+          Come and <span className="shine-text">train with us.</span>
         </h2>
-        <div className="mt-12 flex justify-center">
-          <Button
-            asChild
-            size="lg"
-            className="h-16 rounded-full bg-gold-gradient px-12 text-lg font-black uppercase tracking-widest text-ink shadow-2xl"
-          >
-            <Link to={"/contact" as any}>Contact us now</Link>
+        <div className="mt-8">
+          <Button asChild size="lg" className="rounded-full bg-gold-gradient text-ink shadow-gold hover:brightness-110">
+            <Link to={"/contact" as any}>Contact us <ArrowRight className="ml-2 h-4 w-4" /></Link>
           </Button>
         </div>
       </div>
