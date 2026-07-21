@@ -7,48 +7,71 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 
+// Easy configuration for your academy alerts
+const ACADEMY_CONFIG = {
+  announcement: {
+    title: "Now Training",
+    description: "U10 • U12 • U15 • U18 trial spots available.",
+    buttonText: "Join a Session",
+    link: "/contact",
+  },
+  chat: {
+    title: "Talk to a Coach",
+    status: "Coach online now",
+    online: true,
+  },
+};
+
 export function FloatingWidgets() {
   const [showTop, setShowTop] = useState(false);
   const [announceOpen, setAnnounceOpen] = useState(false);
 
   useEffect(() => {
+    // Show "Back to top" after scrolling down 400px
     const onScroll = () => setShowTop(window.scrollY > 400);
     window.addEventListener("scroll", onScroll, { passive: true });
-    const t = setTimeout(() => setAnnounceOpen(true), 3000);
+
+    // Announcement pops up automatically after 3 seconds
+    const timer = setTimeout(() => setAnnounceOpen(true), 3000);
+
     return () => {
       window.removeEventListener("scroll", onScroll);
-      clearTimeout(t);
+      clearTimeout(timer);
     };
   }, []);
 
   return (
     <>
+      {/* 1. ANNOUNCEMENT CARD (Bottom Left) */}
       {announceOpen && (
         <div className="fixed bottom-24 left-4 z-40 w-[19rem] animate-in slide-in-from-left-6 fade-in duration-500 md:left-6">
           <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-crimson-deep/90 p-5 backdrop-blur-xl shadow-2xl">
+            {/* Decorative Gold Glow */}
             <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-gold/20 blur-2xl" />
+
             <button
               onClick={() => setAnnounceOpen(false)}
-              className="absolute right-3 top-3 text-white/40 hover:text-white"
+              className="absolute right-3 top-3 text-white/40 transition hover:text-white"
             >
               <X className="h-4 w-4" />
             </button>
+
             <div className="flex gap-4">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gold-gradient text-ink">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gold-gradient text-ink shadow-lg shadow-gold/20">
                 <Trophy className="h-5 w-5" />
               </div>
-              <div>
+              <div className="min-w-0">
                 <p className="text-[10px] font-black uppercase tracking-[0.2em] text-gold">
-                  Now training
+                  {ACADEMY_CONFIG.announcement.title}
                 </p>
-                <p className="mt-1 text-[11px] leading-relaxed text-white/70">
-                  U10 · U12 · U15 · U18 trial spots.
+                <p className="mt-1 text-[11px] leading-relaxed text-white/70 font-medium">
+                  {ACADEMY_CONFIG.announcement.description}
                 </p>
                 <a
-                  href="/contact"
-                  className="mt-2 inline-flex items-center gap-1 text-[11px] font-bold text-white hover:text-gold"
+                  href={ACADEMY_CONFIG.announcement.link}
+                  className="mt-2 inline-flex items-center gap-1 text-[11px] font-bold text-white transition hover:text-gold"
                 >
-                  Contact Now <Sparkles className="h-3 w-3" />
+                  {ACADEMY_CONFIG.announcement.buttonText} <Sparkles className="h-3 w-3" />
                 </a>
               </div>
             </div>
@@ -56,69 +79,99 @@ export function FloatingWidgets() {
         </div>
       )}
 
+      {/* 2. ACTION BUTTONS (Bottom Right) */}
       <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-4">
+        {/* Back to Top Button */}
         {showTop && (
           <Tooltip>
             <TooltipTrigger asChild>
               <button
                 onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-crimson-deep/80 text-white backdrop-blur-md transition-all hover:bg-gold hover:text-ink"
+                className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-crimson-deep/80 text-white backdrop-blur-md transition-all hover:scale-110 hover:bg-gold hover:text-ink"
+                aria-label="Back to top"
               >
                 <ArrowUp className="h-5 w-5" />
               </button>
             </TooltipTrigger>
-            <TooltipContent side="left">Scroll up</TooltipContent>
+            <TooltipContent side="left" className="bg-black text-white border-white/10">
+              Scroll up
+            </TooltipContent>
           </Tooltip>
         )}
 
+        {/* Coach Chat Popover */}
         <Popover>
-          <PopoverTrigger asChild>
-            <button className="group relative flex h-16 w-16 items-center justify-center rounded-full bg-gold-gradient text-ink shadow-[0_10px_30px_rgba(212,175,55,0.4)] transition-transform hover:scale-105 active:scale-95">
-              <MessageSquare className="h-7 w-7" />
-              <span className="absolute -right-1 -top-1 flex h-6 w-6 items-center justify-center rounded-full border-2 border-crimson-deep bg-white text-[10px] font-black text-black">
-                1
-              </span>
-            </button>
-          </PopoverTrigger>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <PopoverTrigger asChild>
+                <button className="group relative flex h-16 w-16 items-center justify-center rounded-full bg-gold-gradient text-ink shadow-[0_10px_30px_rgba(212,175,55,0.4)] transition-transform hover:scale-105 active:scale-95">
+                  <MessageSquare className="h-7 w-7" />
+                  <span className="absolute -right-1 -top-1 flex h-6 w-6 items-center justify-center rounded-full border-2 border-crimson-deep bg-white text-[10px] font-black text-black">
+                    1
+                  </span>
+                </button>
+              </PopoverTrigger>
+            </TooltipTrigger>
+            <TooltipContent side="left" className="bg-black text-white border-white/10">
+              Ask a Question
+            </TooltipContent>
+          </Tooltip>
+
           <PopoverContent
             side="top"
             align="end"
             className="w-80 overflow-hidden rounded-[2rem] border-white/10 bg-crimson-deep p-0 shadow-2xl backdrop-blur-2xl"
           >
+            {/* Popover Header */}
             <div className="bg-gold-gradient p-6 text-ink">
               <div className="flex items-center gap-4">
-                <Calendar className="h-6 w-6" />
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/20 backdrop-blur-md">
+                  <Calendar className="h-6 w-6" />
+                </div>
                 <div>
-                  <p className="text-sm font-black uppercase tracking-widest">Talk to us</p>
-                  <p className="text-[10px] opacity-70">Coach online now</p>
+                  <p className="text-sm font-black uppercase tracking-widest leading-none">
+                    {ACADEMY_CONFIG.chat.title}
+                  </p>
+                  <div className="mt-1 flex items-center gap-1.5">
+                    <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-ink" />
+                    <p className="text-[10px] font-bold opacity-70 italic">
+                      {ACADEMY_CONFIG.chat.status}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
+
+            {/* Form */}
             <form
               onSubmit={(e) => {
                 e.preventDefault();
-                toast.success("Sent!");
+                toast.success("Message sent! A coach will be in touch shortly.");
                 (e.target as any).reset();
               }}
               className="space-y-3 p-6"
             >
               <Input
-                className="border-white/10 bg-white/5 text-white placeholder:text-white/30"
+                className="border-white/10 bg-white/5 text-white placeholder:text-white/30 focus:border-gold/50"
                 placeholder="Name"
                 required
               />
               <Input
-                className="border-white/10 bg-white/5 text-white placeholder:text-white/30"
+                className="border-white/10 bg-white/5 text-white placeholder:text-white/30 focus:border-gold/50"
                 type="email"
-                placeholder="Email"
+                placeholder="Email Address"
                 required
               />
               <Textarea
-                className="border-white/10 bg-white/5 text-white placeholder:text-white/30"
-                placeholder="Message"
+                className="border-white/10 bg-white/5 text-white placeholder:text-white/30 focus:border-gold/50"
+                placeholder="How can we help?"
+                rows={3}
                 required
               />
-              <Button type="submit" className="w-full bg-gold-gradient py-6 font-bold text-ink">
+              <Button
+                type="submit"
+                className="w-full bg-gold-gradient py-6 text-sm font-black uppercase tracking-widest text-ink hover:brightness-110"
+              >
                 Send Message <Send className="ml-2 h-4 w-4" />
               </Button>
             </form>
