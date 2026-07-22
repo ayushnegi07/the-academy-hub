@@ -18,7 +18,11 @@ import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip
 
 import heroImg from "@/assets/hero-training.jpg";
 import pitchImg from "@/assets/pitch-aerial.jpg";
-import logo from "@/assets/devsheel-logo.png";
+import logo from "@/assets/devsheel-logo-clean.png";
+import u10Img from "@/assets/group-u10.jpg";
+import u12Img from "@/assets/group-u12.jpg";
+import u15Img from "@/assets/group-u15.jpg";
+import u18Img from "@/assets/group-u18.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -97,12 +101,11 @@ function Hero() {
             </Link>
           </Button>
 
-          {/* PROGRAMS BUTTON: Creative Glassmorphism Fix */}
+          {/* PROGRAMS BUTTON: High-contrast gold outline */}
           <Button
             size="lg"
-            variant="outline"
             onClick={scrollToTraining}
-            className="group relative rounded-full border-white/30 bg-white/5 px-10 text-base font-bold uppercase tracking-widest text-white backdrop-blur-md transition-all hover:border-gold/50 hover:bg-gold/10 hover:shadow-[0_0_20px_rgba(212,175,55,0.2)]"
+            className="group relative rounded-full border-2 border-gold bg-white/95 px-10 text-base font-black uppercase tracking-widest text-ink shadow-gold transition-all hover:scale-105 hover:bg-white hover:shadow-[0_0_30px_rgba(212,175,55,0.6)]"
           >
             <span className="flex items-center gap-2">
               Programs
