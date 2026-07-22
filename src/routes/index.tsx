@@ -196,24 +196,28 @@ function TrainingGroups() {
       title: "Under 10",
       copy: "First steps in structured football. Coordination and ball familiarity.",
       focus: ["First touch", "Coordination", "Fun-led"],
+      img: u10Img,
     },
     {
       tag: "U12",
       title: "Under 12",
       copy: "Building on the fundamentals. Introducing team shape and passing patterns.",
       focus: ["Passing", "Tactics", "Teamwork"],
+      img: u12Img,
     },
     {
       tag: "U15",
       title: "Under 15",
       copy: "Bridging youth football and competitive play. Deeper tactical work.",
       focus: ["Positional roles", "Intelligence", "Fitness"],
+      img: u15Img,
     },
     {
       tag: "U18",
       title: "Under 18",
       copy: "Preparing players for adult football. Higher intensity and tactical detail.",
       focus: ["Detail", "Leadership", "Analysis"],
+      img: u18Img,
     },
   ];
 
@@ -231,26 +235,35 @@ function TrainingGroups() {
           <span className="shine-text">One standard.</span>
         </h2>
 
-        <div className="mt-12 grid gap-5 md:grid-cols-2">
+        <div className="mt-12 grid gap-6 md:grid-cols-2">
           {groups.map((g) => (
             <Card
               key={g.tag}
-              className="group border-white/10 bg-white/5 text-white backdrop-blur-xl transition hover:-translate-y-1 hover:border-gold/40"
+              className="group overflow-hidden border-white/10 bg-white/5 text-white backdrop-blur-xl transition hover:-translate-y-2 hover:border-gold/60 hover:shadow-gold"
             >
-              <CardContent className="p-8">
-                <div className="flex items-center justify-between">
-                  <p className="font-display text-5xl text-gold">{g.tag}</p>
-                  <p className="font-display text-xs uppercase tracking-widest text-white/40">
-                    Academy
-                  </p>
+              <div className="relative h-64 overflow-hidden md:h-72">
+                <img
+                  src={g.img}
+                  alt={`${g.title} training`}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-crimson-deep via-crimson-deep/40 to-transparent" />
+                <div className="absolute left-6 top-6 rounded-full bg-gold-gradient px-4 py-1.5 text-xs font-black uppercase tracking-widest text-ink shadow-gold">
+                  Academy
                 </div>
-                <h3 className="mt-4 font-display text-2xl uppercase">{g.title}</h3>
-                <p className="mt-3 text-sm text-white/70 leading-relaxed">{g.copy}</p>
+                <p className="absolute bottom-4 left-6 font-display text-6xl text-gold drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)]">
+                  {g.tag}
+                </p>
+              </div>
+              <CardContent className="p-8">
+                <h3 className="font-display text-2xl uppercase">{g.title}</h3>
+                <p className="mt-3 text-sm text-white/80 leading-relaxed">{g.copy}</p>
                 <div className="mt-6 flex flex-wrap gap-2">
                   {g.focus.map((f) => (
                     <span
                       key={f}
-                      className="rounded-full bg-white/10 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-gold"
+                      className="rounded-full border border-gold/30 bg-white/10 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-gold"
                     >
                       {f}
                     </span>
