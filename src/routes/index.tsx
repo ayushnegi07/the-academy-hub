@@ -320,6 +320,93 @@ function TheCoach() {
   );
 }
 
+/* ---------------- SOLDIER TRIBUTE (parallax) ---------------- */
+function IndianFlag({ className = "" }: { className?: string }) {
+  return (
+    <div className={`relative overflow-hidden shadow-2xl ${className}`}>
+      <div className="flex h-full w-full flex-col">
+        <div className="flex-1 bg-[#FF9933]" />
+        <div className="flex-1 bg-white flex items-center justify-center">
+          <div className="relative aspect-square h-[85%] rounded-full border-[3px] border-[#0a3a8c]">
+            {Array.from({ length: 24 }).map((_, i) => (
+              <div
+                key={i}
+                className="absolute left-1/2 top-1/2 h-[46%] w-[1.5px] bg-[#0a3a8c] origin-top"
+                style={{ transform: `translate(-50%, 0) rotate(${i * 15}deg)` }}
+              />
+            ))}
+            <div className="absolute left-1/2 top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#0a3a8c]" />
+          </div>
+        </div>
+        <div className="flex-1 bg-[#138808]" />
+      </div>
+    </div>
+  );
+}
+
+function SoldierTribute() {
+  const verses = [
+    ["It is the soldier, not the holy man,", "who has given us freedom of religion."],
+    ["It is the soldier, not the reporter,", "who has given us freedom of the press."],
+    ["It is the soldier, not the poet,", "who has given us freedom of speech."],
+    ["It is the soldier, not the coach,", "who lets a child chase a ball in peace."],
+    ["It is the soldier who salutes the flag,", "who serves beneath the flag,", "and whose coffin is draped by the flag."],
+  ];
+  return (
+    <section
+      className="relative overflow-hidden text-white"
+      style={{
+        backgroundImage: `url(${soldiersImg})`,
+        backgroundAttachment: "fixed",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      <div className="absolute inset-0 bg-black/70" aria-hidden />
+
+      <div className="relative mx-auto max-w-7xl px-4 py-32 md:px-6 md:py-40">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="mb-4 text-xs font-bold uppercase tracking-[0.4em] text-gold">
+            A Tribute
+          </p>
+          <h2 className="font-display text-4xl uppercase leading-[0.95] text-gold drop-shadow-[0_4px_16px_rgba(0,0,0,0.8)] md:text-6xl lg:text-7xl">
+            Because they stand,
+            <br />
+            <span className="text-white">we play.</span>
+          </h2>
+
+          <div className="mx-auto mt-16 space-y-10 text-gold">
+            {verses.map((lines, i) => (
+              <div key={i} className="space-y-1">
+                {lines.map((line, j) => (
+                  <p
+                    key={j}
+                    className="text-base font-bold uppercase tracking-wider drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] md:text-xl"
+                  >
+                    {line}
+                  </p>
+                ))}
+              </div>
+            ))}
+            <p className="pt-6 text-xs uppercase tracking-[0.4em] text-white/70">
+              — For the real heroes of India —
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Left flag — fixed to viewport */}
+      <div className="pointer-events-none fixed left-0 top-1/2 z-0 hidden -translate-y-1/2 md:block">
+        <IndianFlag className="h-56 w-40 lg:h-72 lg:w-52" />
+      </div>
+      {/* Right flag — fixed to viewport */}
+      <div className="pointer-events-none fixed right-0 top-1/2 z-0 hidden -translate-y-1/2 md:block">
+        <IndianFlag className="h-56 w-40 lg:h-72 lg:w-52" />
+      </div>
+    </section>
+  );
+}
+
 /* ---------------- FINAL CTA ---------------- */
 function FinalCTA() {
   return (
