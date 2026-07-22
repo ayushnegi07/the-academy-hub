@@ -19,7 +19,8 @@ import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip
 import heroImg from "@/assets/hero-training.jpg";
 import pitchImg from "@/assets/pitch-aerial.jpg";
 import logo from "@/assets/devsheel-logo-transparent.png";
-import soldiersImg from "@/assets/tribute-soldiers.jpg";
+import soldiersAsset from "@/assets/tribute-soldiers-real.jpg.asset.json";
+const soldiersImg = soldiersAsset.url;
 import u10Img from "@/assets/group-u10.jpg";
 import u12Img from "@/assets/group-u12.jpg";
 import u15Img from "@/assets/group-u15.jpg";
@@ -321,24 +322,48 @@ function TheCoach() {
 }
 
 /* ---------------- SOLDIER TRIBUTE (parallax) ---------------- */
-function IndianFlag({ className = "" }: { className?: string }) {
+function IndianFlag({ className = "", delay = 0 }: { className?: string; delay?: number }) {
   return (
-    <div className={`relative overflow-hidden shadow-2xl ${className}`}>
-      <div className="flex h-full w-full flex-col">
-        <div className="flex-1 bg-[#FF9933]" />
-        <div className="flex-1 bg-white flex items-center justify-center">
-          <div className="relative aspect-square h-[85%] rounded-full border-[3px] border-[#0a3a8c]">
-            {Array.from({ length: 24 }).map((_, i) => (
-              <div
-                key={i}
-                className="absolute left-1/2 top-1/2 h-[46%] w-[1.5px] bg-[#0a3a8c] origin-top"
-                style={{ transform: `translate(-50%, 0) rotate(${i * 15}deg)` }}
-              />
-            ))}
-            <div className="absolute left-1/2 top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#0a3a8c]" />
+    <div className={`relative ${className}`} style={{ perspective: "800px" }}>
+      {/* Flag pole */}
+      <div className="absolute left-0 top-0 h-full w-[3px] bg-gradient-to-b from-zinc-300 via-zinc-500 to-zinc-700 shadow-lg" />
+      <div className="absolute -left-1 top-0 h-3 w-3 rounded-full bg-gold shadow-md" />
+
+      {/* Wavy flag */}
+      <div
+        className="absolute left-[3px] top-2 h-[70%] w-[calc(100%-3px)] origin-left shadow-2xl"
+        style={{
+          animation: `flagWave 3.5s ease-in-out ${delay}s infinite`,
+          filter: "drop-shadow(0 10px 15px rgba(0,0,0,0.5))",
+        }}
+      >
+        <div
+          className="flex h-full w-full flex-col overflow-hidden"
+          style={{
+            maskImage:
+              "radial-gradient(120% 100% at 0% 50%, black 60%, rgba(0,0,0,0.95) 100%)",
+          }}
+        >
+          <div className="flex-1 bg-[#FF9933] relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-r from-black/25 via-transparent to-black/15 mix-blend-overlay" />
+          </div>
+          <div className="flex-1 bg-white flex items-center justify-center relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-r from-black/15 via-transparent to-black/10 mix-blend-overlay" />
+            <div className="relative aspect-square h-[85%] rounded-full border-[3px] border-[#0a3a8c]">
+              {Array.from({ length: 24 }).map((_, i) => (
+                <div
+                  key={i}
+                  className="absolute left-1/2 top-1/2 h-[46%] w-[1.5px] bg-[#0a3a8c] origin-top"
+                  style={{ transform: `translate(-50%, 0) rotate(${i * 15}deg)` }}
+                />
+              ))}
+              <div className="absolute left-1/2 top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#0a3a8c]" />
+            </div>
+          </div>
+          <div className="flex-1 bg-[#138808] relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-r from-black/25 via-transparent to-black/15 mix-blend-overlay" />
           </div>
         </div>
-        <div className="flex-1 bg-[#138808]" />
       </div>
     </div>
   );
@@ -362,14 +387,22 @@ function SoldierTribute() {
         backgroundPosition: "center",
       }}
     >
-      <div className="absolute inset-0 bg-black/70" aria-hidden />
+      {/* Subtle gradient overlay — keeps photo vibrant while text stays readable */}
+      <div
+        className="absolute inset-0"
+        aria-hidden
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 30%, rgba(0,0,0,0.25) 70%, rgba(0,0,0,0.65) 100%)",
+        }}
+      />
 
       <div className="relative mx-auto max-w-7xl px-4 py-32 md:px-6 md:py-40">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="mb-4 text-xs font-bold uppercase tracking-[0.4em] text-gold">
+          <p className="mb-4 text-xs font-bold uppercase tracking-[0.4em] text-gold drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
             A Tribute
           </p>
-          <h2 className="font-display text-4xl uppercase leading-[0.95] text-gold drop-shadow-[0_4px_16px_rgba(0,0,0,0.8)] md:text-6xl lg:text-7xl">
+          <h2 className="font-display text-4xl uppercase leading-[0.95] text-gold drop-shadow-[0_4px_20px_rgba(0,0,0,1)] md:text-6xl lg:text-7xl">
             Because they stand,
             <br />
             <span className="text-white">we play.</span>
@@ -377,38 +410,42 @@ function SoldierTribute() {
 
           <div className="mx-auto mt-16 space-y-10 text-gold">
             {verses.map((lines, i) => (
-              <div key={i} className="space-y-1">
+              <div
+                key={i}
+                className="space-y-1 rounded-2xl bg-black/35 px-6 py-5 backdrop-blur-[2px] ring-1 ring-white/10"
+              >
                 {lines.map((line, j) => (
                   <p
                     key={j}
-                    className="text-base font-bold uppercase tracking-wider drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] md:text-xl"
+                    className="text-base font-bold uppercase tracking-wider drop-shadow-[0_2px_8px_rgba(0,0,0,1)] md:text-xl"
                   >
                     {line}
                   </p>
                 ))}
               </div>
             ))}
-            <p className="pt-6 text-xs uppercase tracking-[0.4em] text-white/70">
+            <p className="pt-6 text-xs uppercase tracking-[0.4em] text-white drop-shadow-[0_2px_8px_rgba(0,0,0,1)]">
               — For the real heroes of India —
             </p>
           </div>
         </div>
       </div>
 
-      {/* Flags — sticky within the tribute section only */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-40 lg:w-52 md:block">
+      {/* Wavy flags — sticky within the tribute section only */}
+      <div className="pointer-events-none absolute inset-y-0 left-2 hidden w-40 lg:w-56 md:block">
         <div className="sticky top-1/2 -translate-y-1/2">
-          <IndianFlag className="h-56 w-40 lg:h-72 lg:w-52" />
+          <IndianFlag className="h-64 w-40 lg:h-80 lg:w-56" delay={0} />
         </div>
       </div>
-      <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-40 lg:w-52 md:block">
+      <div className="pointer-events-none absolute inset-y-0 right-2 hidden w-40 lg:w-56 md:block">
         <div className="sticky top-1/2 -translate-y-1/2">
-          <IndianFlag className="h-56 w-40 lg:h-72 lg:w-52" />
+          <IndianFlag className="h-64 w-40 lg:h-80 lg:w-56" delay={0.6} />
         </div>
       </div>
     </section>
   );
 }
+
 
 /* ---------------- FINAL CTA ---------------- */
 function FinalCTA() {

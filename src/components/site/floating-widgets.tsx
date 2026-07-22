@@ -24,60 +24,16 @@ const ACADEMY_CONFIG = {
 
 export function FloatingWidgets() {
   const [showTop, setShowTop] = useState(false);
-  const [announceOpen, setAnnounceOpen] = useState(false);
 
   useEffect(() => {
-    // Show "Back to top" after scrolling down 400px
     const onScroll = () => setShowTop(window.scrollY > 400);
     window.addEventListener("scroll", onScroll, { passive: true });
-
-    // Announcement pops up automatically after 3 seconds
-    const timer = setTimeout(() => setAnnounceOpen(true), 3000);
-
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      clearTimeout(timer);
-    };
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
     <>
-      {/* 1. ANNOUNCEMENT CARD (Bottom Left) */}
-      {announceOpen && (
-        <div className="fixed bottom-24 left-4 z-40 w-[19rem] animate-in slide-in-from-left-6 fade-in duration-500 md:left-6">
-          <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-crimson-deep/90 p-5 backdrop-blur-xl shadow-2xl">
-            {/* Decorative Gold Glow */}
-            <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-gold/20 blur-2xl" />
 
-            <button
-              onClick={() => setAnnounceOpen(false)}
-              className="absolute right-3 top-3 text-white/40 transition hover:text-white"
-            >
-              <X className="h-4 w-4" />
-            </button>
-
-            <div className="flex gap-4">
-              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gold-gradient text-ink shadow-lg shadow-gold/20">
-                <Trophy className="h-5 w-5" />
-              </div>
-              <div className="min-w-0">
-                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-gold">
-                  {ACADEMY_CONFIG.announcement.title}
-                </p>
-                <p className="mt-1 text-[11px] leading-relaxed text-white/70 font-medium">
-                  {ACADEMY_CONFIG.announcement.description}
-                </p>
-                <a
-                  href={ACADEMY_CONFIG.announcement.link}
-                  className="mt-2 inline-flex items-center gap-1 text-[11px] font-bold text-white transition hover:text-gold"
-                >
-                  {ACADEMY_CONFIG.announcement.buttonText} <Sparkles className="h-3 w-3" />
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* 2. ACTION BUTTONS (Bottom Right) */}
       <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-4">
