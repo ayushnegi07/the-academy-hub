@@ -283,9 +283,11 @@ function TheCoach() {
   return (
     <section className="mx-auto max-w-7xl px-4 py-24 md:px-6">
       <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-        <div className="relative overflow-hidden rounded-[2rem] border border-zinc-100 aspect-square bg-zinc-50 flex items-center justify-center shadow-inner">
-          <img src={logo} alt="Devsheel" className="h-40 w-auto opacity-20 grayscale" />
-          <div className="absolute bottom-6 right-6 rounded-2xl bg-gold-gradient px-6 py-4 text-ink shadow-xl">
+        <div className="relative overflow-hidden rounded-[2rem] aspect-square bg-hero-gradient flex items-center justify-center shadow-lift">
+          <div className="absolute inset-0 pitch-lines opacity-30" aria-hidden />
+          <div className="absolute inset-0 bg-gradient-to-tr from-black/40 via-transparent to-gold/10" aria-hidden />
+          <img src={logo} alt="Devsheel Football Academy" className="relative z-10 w-4/5 max-w-md drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]" />
+          <div className="absolute bottom-6 right-6 z-10 rounded-2xl bg-gold-gradient px-6 py-4 text-ink shadow-xl">
             <p className="font-display text-[10px] uppercase tracking-[0.3em] font-black">
               Founder
             </p>
@@ -328,12 +330,15 @@ function FinalCTA() {
       <div className="relative mx-auto max-w-4xl px-4 md:px-6">
         <img
           src={logo}
-          alt="Devsheel"
-          className="mx-auto h-16 w-auto mb-8 brightness-0 invert opacity-80"
+          alt="Devsheel Football Academy"
+          className="mx-auto mb-10 h-32 w-auto md:h-40 drop-shadow-[0_8px_24px_rgba(0,0,0,0.6)]"
         />
-        <h2 className="font-display text-5xl uppercase leading-[0.95] md:text-7xl">
+        <h2 className="font-display text-5xl uppercase leading-[0.95] text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.7)] md:text-7xl">
           Come and <span className="shine-text">train.</span>
         </h2>
+        <p className="mx-auto mt-6 max-w-xl text-base font-medium text-white/90 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] md:text-lg">
+          Reach out and we'll share session times, location and how to get your player involved.
+        </p>
         <div className="mt-10 flex justify-center">
           <Button
             asChild
