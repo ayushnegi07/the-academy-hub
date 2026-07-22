@@ -19,7 +19,8 @@ import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip
 import heroImg from "@/assets/hero-training.jpg";
 import pitchImg from "@/assets/pitch-aerial.jpg";
 import logo from "@/assets/devsheel-logo-transparent.png";
-import soldiersImg from "@/assets/tribute-soldiers.jpg";
+import soldiersAsset from "@/assets/tribute-soldiers-real.jpg.asset.json";
+const soldiersImg = soldiersAsset.url;
 import u10Img from "@/assets/group-u10.jpg";
 import u12Img from "@/assets/group-u12.jpg";
 import u15Img from "@/assets/group-u15.jpg";
