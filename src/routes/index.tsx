@@ -46,6 +46,7 @@ function HomePage() {
       <Pillars />
       <TrainingGroups />
       <TheCoach />
+      <SoldierTribute />
       <FinalCTA />
     </main>
   );
