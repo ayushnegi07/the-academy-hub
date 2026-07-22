@@ -285,10 +285,9 @@ function TheCoach() {
   return (
     <section className="mx-auto max-w-7xl px-4 py-24 md:px-6">
       <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-        <div className="relative overflow-hidden rounded-[2rem] aspect-square bg-hero-gradient flex items-center justify-center shadow-lift">
-          <div className="absolute inset-0 pitch-lines opacity-30" aria-hidden />
-          <div className="absolute inset-0 bg-gradient-to-tr from-black/40 via-transparent to-gold/10" aria-hidden />
-          <img src={logo} alt="Devsheel Football Academy" className="relative z-10 w-4/5 max-w-md drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]" />
+        <div className="relative overflow-hidden rounded-[2rem] aspect-square bg-white flex items-center justify-center shadow-lift border border-zinc-100">
+          <div className="absolute inset-0 pitch-lines opacity-[0.06]" aria-hidden />
+          <img src={logo} alt="Devsheel Football Academy" className="relative z-10 w-4/5 max-w-md" />
           <div className="absolute bottom-6 right-6 z-10 rounded-2xl bg-gold-gradient px-6 py-4 text-ink shadow-xl">
             <p className="font-display text-[10px] uppercase tracking-[0.3em] font-black">
               Founder
