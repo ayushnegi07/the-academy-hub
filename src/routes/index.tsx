@@ -395,13 +395,16 @@ function SoldierTribute() {
         </div>
       </div>
 
-      {/* Left flag — fixed to viewport */}
-      <div className="pointer-events-none fixed left-0 top-1/2 z-0 hidden -translate-y-1/2 md:block">
-        <IndianFlag className="h-56 w-40 lg:h-72 lg:w-52" />
+      {/* Flags — sticky within the tribute section only */}
+      <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-40 lg:w-52 md:block">
+        <div className="sticky top-1/2 -translate-y-1/2">
+          <IndianFlag className="h-56 w-40 lg:h-72 lg:w-52" />
+        </div>
       </div>
-      {/* Right flag — fixed to viewport */}
-      <div className="pointer-events-none fixed right-0 top-1/2 z-0 hidden -translate-y-1/2 md:block">
-        <IndianFlag className="h-56 w-40 lg:h-72 lg:w-52" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-40 lg:w-52 md:block">
+        <div className="sticky top-1/2 -translate-y-1/2">
+          <IndianFlag className="h-56 w-40 lg:h-72 lg:w-52" />
+        </div>
       </div>
     </section>
   );
