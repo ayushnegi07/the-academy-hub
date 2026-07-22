@@ -18,7 +18,8 @@ import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip
 
 import heroImg from "@/assets/hero-training.jpg";
 import pitchImg from "@/assets/pitch-aerial.jpg";
-import logo from "@/assets/devsheel-logo-clean.png";
+import logo from "@/assets/devsheel-logo-transparent.png";
+import soldiersImg from "@/assets/tribute-soldiers.jpg";
 import u10Img from "@/assets/group-u10.jpg";
 import u12Img from "@/assets/group-u12.jpg";
 import u15Img from "@/assets/group-u15.jpg";
@@ -45,6 +46,7 @@ function HomePage() {
       <Pillars />
       <TrainingGroups />
       <TheCoach />
+      <SoldierTribute />
       <FinalCTA />
     </main>
   );
@@ -283,10 +285,9 @@ function TheCoach() {
   return (
     <section className="mx-auto max-w-7xl px-4 py-24 md:px-6">
       <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-        <div className="relative overflow-hidden rounded-[2rem] aspect-square bg-hero-gradient flex items-center justify-center shadow-lift">
-          <div className="absolute inset-0 pitch-lines opacity-30" aria-hidden />
-          <div className="absolute inset-0 bg-gradient-to-tr from-black/40 via-transparent to-gold/10" aria-hidden />
-          <img src={logo} alt="Devsheel Football Academy" className="relative z-10 w-4/5 max-w-md drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]" />
+        <div className="relative overflow-hidden rounded-[2rem] aspect-square bg-white flex items-center justify-center shadow-lift border border-zinc-100">
+          <div className="absolute inset-0 pitch-lines opacity-[0.06]" aria-hidden />
+          <img src={logo} alt="Devsheel Football Academy" className="relative z-10 w-4/5 max-w-md" />
           <div className="absolute bottom-6 right-6 z-10 rounded-2xl bg-gold-gradient px-6 py-4 text-ink shadow-xl">
             <p className="font-display text-[10px] uppercase tracking-[0.3em] font-black">
               Founder
@@ -313,6 +314,96 @@ function TheCoach() {
               Get in touch <Mail className="ml-2 h-4 w-4" />
             </Link>
           </Button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------- SOLDIER TRIBUTE (parallax) ---------------- */
+function IndianFlag({ className = "" }: { className?: string }) {
+  return (
+    <div className={`relative overflow-hidden shadow-2xl ${className}`}>
+      <div className="flex h-full w-full flex-col">
+        <div className="flex-1 bg-[#FF9933]" />
+        <div className="flex-1 bg-white flex items-center justify-center">
+          <div className="relative aspect-square h-[85%] rounded-full border-[3px] border-[#0a3a8c]">
+            {Array.from({ length: 24 }).map((_, i) => (
+              <div
+                key={i}
+                className="absolute left-1/2 top-1/2 h-[46%] w-[1.5px] bg-[#0a3a8c] origin-top"
+                style={{ transform: `translate(-50%, 0) rotate(${i * 15}deg)` }}
+              />
+            ))}
+            <div className="absolute left-1/2 top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#0a3a8c]" />
+          </div>
+        </div>
+        <div className="flex-1 bg-[#138808]" />
+      </div>
+    </div>
+  );
+}
+
+function SoldierTribute() {
+  const verses = [
+    ["It is the soldier, not the holy man,", "who has given us freedom of religion."],
+    ["It is the soldier, not the reporter,", "who has given us freedom of the press."],
+    ["It is the soldier, not the poet,", "who has given us freedom of speech."],
+    ["It is the soldier, not the coach,", "who lets a child chase a ball in peace."],
+    ["It is the soldier who salutes the flag,", "who serves beneath the flag,", "and whose coffin is draped by the flag."],
+  ];
+  return (
+    <section
+      className="relative overflow-hidden text-white"
+      style={{
+        backgroundImage: `url(${soldiersImg})`,
+        backgroundAttachment: "fixed",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      <div className="absolute inset-0 bg-black/70" aria-hidden />
+
+      <div className="relative mx-auto max-w-7xl px-4 py-32 md:px-6 md:py-40">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="mb-4 text-xs font-bold uppercase tracking-[0.4em] text-gold">
+            A Tribute
+          </p>
+          <h2 className="font-display text-4xl uppercase leading-[0.95] text-gold drop-shadow-[0_4px_16px_rgba(0,0,0,0.8)] md:text-6xl lg:text-7xl">
+            Because they stand,
+            <br />
+            <span className="text-white">we play.</span>
+          </h2>
+
+          <div className="mx-auto mt-16 space-y-10 text-gold">
+            {verses.map((lines, i) => (
+              <div key={i} className="space-y-1">
+                {lines.map((line, j) => (
+                  <p
+                    key={j}
+                    className="text-base font-bold uppercase tracking-wider drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] md:text-xl"
+                  >
+                    {line}
+                  </p>
+                ))}
+              </div>
+            ))}
+            <p className="pt-6 text-xs uppercase tracking-[0.4em] text-white/70">
+              — For the real heroes of India —
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Flags — sticky within the tribute section only */}
+      <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-40 lg:w-52 md:block">
+        <div className="sticky top-1/2 -translate-y-1/2">
+          <IndianFlag className="h-56 w-40 lg:h-72 lg:w-52" />
+        </div>
+      </div>
+      <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-40 lg:w-52 md:block">
+        <div className="sticky top-1/2 -translate-y-1/2">
+          <IndianFlag className="h-56 w-40 lg:h-72 lg:w-52" />
         </div>
       </div>
     </section>
