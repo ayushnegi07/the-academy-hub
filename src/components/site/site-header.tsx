@@ -1,7 +1,7 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X, ArrowRight } from "lucide-react";
-import logo from "@/assets/devsheel-logo.png";
+import logo from "@/assets/devsheel-logo-clean.png";
 import { Button } from "@/components/ui/button";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 
@@ -41,7 +41,7 @@ export function SiteHeader() {
           to={"/" as any}
           className="flex items-center gap-3 transition-transform hover:scale-105 active:scale-95"
         >
-          <img src={logo} alt="Logo" className="h-10 w-auto md:h-12" />
+          <img src={logo} alt="Devsheel Football Academy" className="h-14 w-auto md:h-20 drop-shadow-[0_4px_10px_rgba(0,0,0,0.4)]" />
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex">
