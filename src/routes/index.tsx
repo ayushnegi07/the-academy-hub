@@ -60,16 +60,21 @@ function Hero() {
   };
 
   return (
-    <section className="relative -mt-[76px] h-[90vh] min-h-[700px] w-full overflow-hidden text-white">
+    <section className="relative -mt-[76px] h-[90vh] min-h-[700px] w-full overflow-hidden bg-black text-white">
       {/* BACKGROUND VIDEO LAYER */}
-      <div className="absolute inset-0 -z-10 bg-black">
+      <div className="absolute inset-0 z-0">
+        {/* Poster fallback */}
+        <img src={heroImg} alt="" aria-hidden className="absolute inset-0 h-full w-full object-cover" />
+
         {/* 1. Blurred Video Background (Fills screen on desktop) */}
         <video
           autoPlay
           loop
           muted
           playsInline
-          className="absolute h-full w-full object-cover opacity-40 blur-3xl scale-110"
+          preload="auto"
+          poster={heroImg}
+          className="absolute inset-0 h-full w-full object-cover opacity-40 blur-3xl scale-110"
         >
           <source src="/academy-hero.mp4" type="video/mp4" />
         </video>
@@ -80,7 +85,8 @@ function Hero() {
           loop
           muted
           playsInline
-          className="relative mx-auto h-full w-auto object-contain shadow-[0_0_80px_rgba(0,0,0,0.6)]"
+          preload="auto"
+          className="absolute inset-0 mx-auto h-full w-auto object-contain shadow-[0_0_80px_rgba(0,0,0,0.6)]"
         >
           <source src="/academy-hero.mp4" type="video/mp4" />
         </video>
@@ -90,6 +96,7 @@ function Hero() {
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/20 to-transparent" />
         <div className="absolute inset-0 pitch-lines opacity-20" />
       </div>
+
 
       <div className="relative z-20 mx-auto flex h-full max-w-5xl flex-col justify-center px-4 md:px-6">
         {/* HEADING */}
