@@ -324,8 +324,7 @@ function TheCoach() {
             <span className="text-primary">Every session.</span>
           </h2>
           <p className="mt-6 text-lg font-medium text-zinc-500 leading-relaxed">
-            The academy is run personally by the founder. That means every player is seen, every
-            session is led with intent, and no group is passed off to an assistant.
+            Run personally by the founder. Every player is seen and every session is led with intent.
           </p>
           <Button
             asChild
