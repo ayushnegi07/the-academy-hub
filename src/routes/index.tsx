@@ -177,8 +177,7 @@ function Pillars() {
           </h2>
         </div>
         <p className="max-w-xl text-muted-foreground font-medium">
-          Every session is designed to develop the whole player — not just the athlete on the ball,
-          but the person off it.
+          Every session works on the player and the person.
         </p>
       </div>
 
