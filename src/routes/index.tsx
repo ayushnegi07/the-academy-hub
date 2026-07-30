@@ -108,9 +108,8 @@ function Hero() {
 
         {/* PARAGRAPH */}
         <p className="mt-6 max-w-2xl text-lg font-medium text-white drop-shadow-[0_2px_12px_rgba(0,0,0,1)] md:text-xl">
-          Devsheel Football Academy is a young grassroots academy focused on the fundamentals —
-          first touch, movement, decision-making and the discipline that turns players into
-          teammates. We train four age groups, one session at a time.
+          A young grassroots academy built on the basics — first touch, movement and teamwork.
+          We train four age groups, one session at a time.
         </p>
 
         <div className="mt-10 flex flex-wrap items-center gap-4">
