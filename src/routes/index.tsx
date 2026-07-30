@@ -108,9 +108,8 @@ function Hero() {
 
         {/* PARAGRAPH */}
         <p className="mt-6 max-w-2xl text-lg font-medium text-white drop-shadow-[0_2px_12px_rgba(0,0,0,1)] md:text-xl">
-          Devsheel Football Academy is a young grassroots academy focused on the fundamentals —
-          first touch, movement, decision-making and the discipline that turns players into
-          teammates. We train four age groups, one session at a time.
+          A young grassroots academy built on the basics — first touch, movement and teamwork.
+          We train four age groups, one session at a time.
         </p>
 
         <div className="mt-10 flex flex-wrap items-center gap-4">
@@ -178,8 +177,7 @@ function Pillars() {
           </h2>
         </div>
         <p className="max-w-xl text-muted-foreground font-medium">
-          Every session is designed to develop the whole player — not just the athlete on the ball,
-          but the person off it.
+          Every session works on the player and the person.
         </p>
       </div>
 
@@ -326,8 +324,7 @@ function TheCoach() {
             <span className="text-primary">Every session.</span>
           </h2>
           <p className="mt-6 text-lg font-medium text-zinc-500 leading-relaxed">
-            The academy is run personally by the founder. That means every player is seen, every
-            session is led with intent, and no group is passed off to an assistant.
+            Run personally by the founder. Every player is seen and every session is led with intent.
           </p>
           <Button
             asChild
