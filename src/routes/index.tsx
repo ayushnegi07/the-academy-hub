@@ -426,7 +426,7 @@ function SoldierTribute() {
                 {lines.map((line, j) => (
                   <p
                     key={j}
-                    className="text-base font-bold uppercase leading-snug tracking-wide text-gold-light drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)] md:text-xl"
+                    className="text-base font-bold uppercase leading-snug tracking-wide text-gold-soft drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)] md:text-xl"
                   >
                     {line}
                   </p>
