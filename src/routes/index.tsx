@@ -18,7 +18,8 @@ import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/h
 // Assets
 import heroImg from "@/assets/hero-training.jpg";
 import pitchImg from "@/assets/pitch-aerial.jpg";
-import logo from "@/assets/devsheel-logo-transparent.png";
+import logo from "@/assets/devsheel-logo-mark.png";
+import logoLight from "@/assets/devsheel-logo-light.png";
 import soldiersImg from "@/assets/tribute-soldiers-real.jpg";
 import u10Img from "@/assets/under_10.jpg";
 import u12Img from "@/assets/under_12.jpg";
