@@ -402,27 +402,37 @@ function SoldierTribute() {
         backgroundPosition: "center",
       }}
     >
-      <div className="absolute inset-0 bg-black/60" aria-hidden />
+      <div className="absolute inset-0 bg-black/45" aria-hidden />
+      <div
+        className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/25 to-black/70"
+        aria-hidden
+      />
       <div className="relative mx-auto max-w-7xl px-4 py-32 md:px-6 md:py-40">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="mb-4 text-xs font-bold uppercase tracking-[0.4em] text-gold">A Tribute</p>
-          <h2 className="font-display text-4xl uppercase leading-[0.95] text-gold md:text-6xl lg:text-7xl">
+          <p className="mb-4 text-xs font-black uppercase tracking-[0.4em] text-gold drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+            A Tribute
+          </p>
+          <h2 className="font-display text-4xl uppercase leading-[0.95] text-gold drop-shadow-[0_4px_18px_rgba(0,0,0,0.95)] md:text-6xl lg:text-7xl">
             Because they stand,
             <br />
             <span className="text-white">we play.</span>
           </h2>
-          <div className="mx-auto mt-16 space-y-10 text-gold">
+          <div className="mx-auto mt-16 space-y-8">
             {verses.map((lines, i) => (
               <div
                 key={i}
-                className="space-y-1 rounded-2xl bg-black/35 px-6 py-5 backdrop-blur-sm ring-1 ring-white/10"
+                className="space-y-1.5 rounded-2xl border border-gold/25 bg-black/65 px-7 py-6 shadow-[0_10px_40px_rgba(0,0,0,0.5)] backdrop-blur-md"
               >
                 {lines.map((line, j) => (
-                  <p key={j} className="text-base font-bold uppercase tracking-wider md:text-xl">
+                  <p
+                    key={j}
+                    className="text-base font-bold uppercase leading-snug tracking-wide text-gold-light drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)] md:text-xl"
+                  >
                     {line}
                   </p>
                 ))}
               </div>
+
             ))}
           </div>
         </div>
