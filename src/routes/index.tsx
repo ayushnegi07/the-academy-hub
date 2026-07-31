@@ -462,13 +462,25 @@ function FinalCTA() {
       <div className="absolute inset-0 bg-hero-gradient opacity-95 -z-10" />
       <div className="absolute inset-0 bg-black/50 -z-10" />
       <div className="relative mx-auto max-w-4xl px-4 md:px-6">
-        <img
-          src={logoLight}
-          alt="Devsheel Football Academy"
-          className="mx-auto mb-10 h-32 w-auto drop-shadow-[0_6px_24px_rgba(0,0,0,0.7)] md:h-40"
-        />
-        <h2 className="font-display text-5xl uppercase leading-[0.95] text-white md:text-7xl">
-          Come and <span className="shine-text">train.</span>
+        <div className="relative mx-auto mb-10 w-fit">
+          {/* warm glow behind the mark */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute left-1/2 top-1/2 h-[130%] w-[130%] -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl"
+            style={{
+              background:
+                "radial-gradient(ellipse at center, color-mix(in oklab, var(--gold) 45%, transparent) 0%, color-mix(in oklab, var(--gold) 12%, transparent) 45%, transparent 72%)",
+            }}
+          />
+          <img
+            src={logoLight}
+            alt="Devsheel Football Academy"
+            className="relative mx-auto h-40 w-auto brightness-110 contrast-110 saturate-125 drop-shadow-[0_10px_36px_rgba(0,0,0,0.85)] md:h-52"
+          />
+        </div>
+        <h2 className="font-display text-5xl uppercase leading-[0.95] text-white [text-shadow:0_4px_18px_rgba(0,0,0,0.85)] md:text-7xl">
+          Come and{" "}
+          <span className="text-gold [text-shadow:0_4px_18px_rgba(0,0,0,0.9)]">train.</span>
         </h2>
         <div className="mt-10 flex justify-center">
           <Button
