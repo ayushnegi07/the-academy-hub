@@ -450,7 +450,11 @@ function FinalCTA() {
       <div className="absolute inset-0 bg-hero-gradient opacity-95 -z-10" />
       <div className="absolute inset-0 bg-black/50 -z-10" />
       <div className="relative mx-auto max-w-4xl px-4 md:px-6">
-        <img src={logo} alt="Logo" className="mx-auto mb-10 h-32 w-auto md:h-40" />
+        <img
+          src={logoLight}
+          alt="Devsheel Football Academy"
+          className="mx-auto mb-10 h-32 w-auto drop-shadow-[0_6px_24px_rgba(0,0,0,0.7)] md:h-40"
+        />
         <h2 className="font-display text-5xl uppercase leading-[0.95] text-white md:text-7xl">
           Come and <span className="shine-text">train.</span>
         </h2>
