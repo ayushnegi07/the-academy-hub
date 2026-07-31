@@ -18,7 +18,8 @@ import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/h
 // Assets
 import heroImg from "@/assets/hero-training.jpg";
 import pitchImg from "@/assets/pitch-aerial.jpg";
-import logo from "@/assets/devsheel-logo-transparent.png";
+import logo from "@/assets/devsheel-logo-mark.png";
+import logoLight from "@/assets/devsheel-logo-light.png";
 import soldiersImg from "@/assets/tribute-soldiers-real.jpg";
 import u10Img from "@/assets/under_10.jpg";
 import u12Img from "@/assets/under_12.jpg";
@@ -401,27 +402,37 @@ function SoldierTribute() {
         backgroundPosition: "center",
       }}
     >
-      <div className="absolute inset-0 bg-black/60" aria-hidden />
+      <div className="absolute inset-0 bg-black/45" aria-hidden />
+      <div
+        className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/25 to-black/70"
+        aria-hidden
+      />
       <div className="relative mx-auto max-w-7xl px-4 py-32 md:px-6 md:py-40">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="mb-4 text-xs font-bold uppercase tracking-[0.4em] text-gold">A Tribute</p>
-          <h2 className="font-display text-4xl uppercase leading-[0.95] text-gold md:text-6xl lg:text-7xl">
+          <p className="mb-4 text-xs font-black uppercase tracking-[0.4em] text-gold drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+            A Tribute
+          </p>
+          <h2 className="font-display text-4xl uppercase leading-[0.95] text-gold drop-shadow-[0_4px_18px_rgba(0,0,0,0.95)] md:text-6xl lg:text-7xl">
             Because they stand,
             <br />
             <span className="text-white">we play.</span>
           </h2>
-          <div className="mx-auto mt-16 space-y-10 text-gold">
+          <div className="mx-auto mt-16 space-y-8">
             {verses.map((lines, i) => (
               <div
                 key={i}
-                className="space-y-1 rounded-2xl bg-black/35 px-6 py-5 backdrop-blur-sm ring-1 ring-white/10"
+                className="space-y-1.5 rounded-2xl border border-gold/25 bg-black/65 px-7 py-6 shadow-[0_10px_40px_rgba(0,0,0,0.5)] backdrop-blur-md"
               >
                 {lines.map((line, j) => (
-                  <p key={j} className="text-base font-bold uppercase tracking-wider md:text-xl">
+                  <p
+                    key={j}
+                    className="text-base font-bold uppercase leading-snug tracking-wide text-gold-soft drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)] md:text-xl"
+                  >
                     {line}
                   </p>
                 ))}
               </div>
+
             ))}
           </div>
         </div>
@@ -449,7 +460,11 @@ function FinalCTA() {
       <div className="absolute inset-0 bg-hero-gradient opacity-95 -z-10" />
       <div className="absolute inset-0 bg-black/50 -z-10" />
       <div className="relative mx-auto max-w-4xl px-4 md:px-6">
-        <img src={logo} alt="Logo" className="mx-auto mb-10 h-32 w-auto md:h-40" />
+        <img
+          src={logoLight}
+          alt="Devsheel Football Academy"
+          className="mx-auto mb-10 h-32 w-auto drop-shadow-[0_6px_24px_rgba(0,0,0,0.7)] md:h-40"
+        />
         <h2 className="font-display text-5xl uppercase leading-[0.95] text-white md:text-7xl">
           Come and <span className="shine-text">train.</span>
         </h2>

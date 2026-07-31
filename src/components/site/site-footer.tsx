@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Instagram, Youtube, Facebook, Twitter, MapPin, Phone, Mail } from "lucide-react";
-import logo from "@/assets/devsheel-logo-transparent.png";
+import logo from "@/assets/devsheel-logo-light.png";
 
 export function SiteFooter() {
   return (
