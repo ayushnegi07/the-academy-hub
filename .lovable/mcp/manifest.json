@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "sdk_version": "0.26.1",
+  "path": "/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "devsheel-football-academy",
+      "version": "0.1.0",
+      "title": "Devsheel Football Academy"
+    },
+    "tools": [
+      {
+        "name": "get_academy_info",
+        "title": "Get academy info",
+        "description": "Get an overview of Devsheel Football Academy: what it is, how it is coached, and its public contact details.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_age_groups",
+        "title": "List age groups",
+        "description": "List the academy's training age groups (U10, U12, U15, U18) with a summary and coaching focus for each.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_age_group",
+        "title": "Get age group details",
+        "description": "Get the training details for one academy age group by its tag (U10, U12, U15 or U18).",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "tag": {
+              "type": "string",
+              "description": "Age group tag, e.g. U10, U12, U15 or U18."
+            }
+          },
+          "required": [
+            "tag"
+          ]
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
