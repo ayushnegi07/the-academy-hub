@@ -1,9 +1,39 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Heart, Compass, Users, Trophy, ArrowRight } from "lucide-react";
+import {
+  Heart,
+  Compass,
+  Users,
+  Trophy,
+  ArrowRight,
+  MapPin,
+  Clock,
+  Ruler,
+  Goal,
+  Camera,
+  Info,
+  Construction,
+} from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Skeleton } from "@/components/ui/skeleton";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import {
   Dialog,
   DialogContent,
@@ -16,6 +46,7 @@ import duelBall from "@/assets/duel-ball.jpg";
 import runningPair from "@/assets/running-pair.jpg";
 import sessionGround from "@/assets/session-ground.jpg";
 import playerKit from "@/assets/player-kit.jpg";
+
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -38,13 +69,39 @@ export const Route = createFileRoute("/about")({
   component: AboutPage,
 });
 
-const gallery = [
-  { src: matchWide, alt: "Devsheel players in a match on the main ground", caption: "Match day on the main ground" },
-  { src: duelBall, alt: "Two players contesting the ball mid-air", caption: "Duels — every ball is competed for" },
-  { src: runningPair, alt: "Two young players running side by side", caption: "Pressing and recovery runs" },
-  { src: sessionGround, alt: "Training session with several balls in play", caption: "Small-group technical work" },
-  { src: playerKit, alt: "Player in Devsheel academy kit during a session", caption: "The Devsheel kit" },
+const tournamentPhotos = [
+  {
+    src: matchWide,
+    alt: "Devsheel players lining up during a tournament match",
+    caption: "Tournament match day",
+    note: "An away tournament we travelled to — not our home ground.",
+  },
+  {
+    src: duelBall,
+    alt: "Two players contesting the ball mid-air at a tournament",
+    caption: "Contesting every ball",
+    note: "Aerial duels against an older, stronger side.",
+  },
+  {
+    src: runningPair,
+    alt: "Two Devsheel players running side by side at a tournament",
+    caption: "Pressing in pairs",
+    note: "Recovery runs after losing the ball high up the pitch.",
+  },
+  {
+    src: sessionGround,
+    alt: "Warm-up before a tournament fixture",
+    caption: "Pre-match warm-up",
+    note: "Rondo and activation work before kick-off.",
+  },
+  {
+    src: playerKit,
+    alt: "Player in Devsheel kit at the tournament",
+    caption: "In Devsheel colours",
+    note: "First outing in the academy kit.",
+  },
 ];
+
 
 function AboutPage() {
   return (
@@ -152,102 +209,225 @@ function AboutPage() {
         </div>
       </section>
 
-      {/* PHOTO GALLERY (click to enlarge) */}
-      <section className="relative overflow-hidden bg-hero-gradient py-20 text-white">
+      {/* TOURNAMENT SECTION */}
+      <section id="tournament" className="relative overflow-hidden bg-hero-gradient py-20 text-white scroll-mt-24">
         <div className="absolute inset-0 pitch-lines opacity-25" aria-hidden />
-        <div className="absolute inset-0 bg-black/35" aria-hidden />
+        <div className="absolute inset-0 bg-black/40" aria-hidden />
         <div className="relative mx-auto max-w-7xl px-4 md:px-6">
-          <div className="max-w-2xl">
-            <Badge className="mb-4 border-gold/40 bg-white/10 text-gold uppercase tracking-widest">
-              From the ground
-            </Badge>
-            <h2 className="font-display text-4xl uppercase leading-[0.95] md:text-5xl">
-              Real sessions.
-              <br />
-              <span className="shine-text">Real matches.</span>
-            </h2>
-            <p className="mt-4 text-white/85 font-medium">
-              Photos from our own training and matches — tap any image to see it full size.
-            </p>
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <div className="max-w-2xl">
+              <Badge className="mb-4 border-gold/40 bg-white/10 text-gold uppercase tracking-widest">
+                Tournament
+              </Badge>
+              <h2 className="font-display text-4xl uppercase leading-[0.95] md:text-5xl">
+                Away days.
+                <br />
+                <span className="shine-text">Real competition.</span>
+              </h2>
+              <p className="mt-4 font-medium text-white/85">
+                These photos are from a tournament we travelled to play — an away ground, not ours.
+                Tournaments are where the training gets tested.
+              </p>
+            </div>
+
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button
+                  variant="outline"
+                  className="rounded-full border-gold/50 bg-white/10 text-white hover:bg-white/20"
+                >
+                  <Info className="mr-2 h-4 w-4" /> About these photos
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="w-72 border-zinc-800 bg-zinc-950 text-white">
+                <p className="font-display text-lg uppercase text-gold">Away tournament</p>
+                <p className="mt-1 text-xs text-white/70">
+                  Taken at a tournament venue we were invited to. Our own academy ground gets its own
+                  section below once the photos are ready.
+                </p>
+              </PopoverContent>
+            </Popover>
           </div>
 
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {gallery.map((g, i) => (
-              <Dialog key={g.caption}>
-                <DialogTrigger asChild>
-                  <button
-                    type="button"
-                    className={`group relative overflow-hidden rounded-2xl border border-white/10 shadow-lift transition hover:-translate-y-1 hover:border-gold/60 hover:shadow-gold ${
-                      i === 0 ? "sm:col-span-2 lg:col-span-2" : ""
-                    }`}
-                  >
-                    <img
-                      src={g.src}
-                      alt={g.alt}
-                      className={`w-full object-cover transition-transform duration-700 group-hover:scale-105 ${
-                        i === 0 ? "aspect-[16/9]" : "aspect-[4/3]"
-                      }`}
-                    />
-                    <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 to-transparent p-4 pt-12 text-left">
-                      <p className="text-xs font-black uppercase tracking-widest text-gold">
+          {/* Carousel of tournament photos */}
+          <Carousel opts={{ align: "start", loop: true }} className="mt-12">
+            <CarouselContent className="-ml-4">
+              {tournamentPhotos.map((g, i) => (
+                <CarouselItem key={g.caption} className="pl-4 sm:basis-1/2 lg:basis-1/3">
+                  <Dialog>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <DialogTrigger asChild>
+                          <button
+                            type="button"
+                            className="group relative block w-full overflow-hidden rounded-2xl border border-white/10 shadow-lift transition hover:-translate-y-1 hover:border-gold/60 hover:shadow-gold"
+                          >
+                            <img
+                              src={g.src}
+                              alt={g.alt}
+                              className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                            />
+                            <span className="absolute left-4 top-4 rounded-full bg-gold-gradient px-3 py-1 text-[10px] font-black uppercase tracking-widest text-ink shadow-gold">
+                              Match {i + 1}
+                            </span>
+                            <span className="pointer-events-none absolute inset-x-0 bottom-0 flex items-center gap-2 bg-gradient-to-t from-black/90 to-transparent p-4 pt-12 text-left">
+                              <Camera className="h-4 w-4 text-gold" />
+                              <span className="text-xs font-black uppercase tracking-widest text-gold">
+                                {g.caption}
+                              </span>
+                            </span>
+                          </button>
+                        </DialogTrigger>
+                      </TooltipTrigger>
+                      <TooltipContent>{g.note}</TooltipContent>
+                    </Tooltip>
+                    <DialogContent className="max-w-4xl border-white/10 bg-zinc-950 p-2 text-white">
+                      <DialogTitle className="sr-only">{g.caption}</DialogTitle>
+                      <DialogDescription className="sr-only">{g.alt}</DialogDescription>
+                      <img src={g.src} alt={g.alt} className="w-full rounded-lg object-contain" />
+                      <p className="px-3 pb-1 pt-1 text-xs font-black uppercase tracking-widest text-gold">
                         {g.caption}
                       </p>
-                    </div>
-                  </button>
-                </DialogTrigger>
-                <DialogContent className="max-w-4xl border-white/10 bg-zinc-950 p-2 text-white">
-                  <DialogTitle className="sr-only">{g.caption}</DialogTitle>
-                  <DialogDescription className="sr-only">{g.alt}</DialogDescription>
-                  <img src={g.src} alt={g.alt} className="w-full rounded-lg object-contain" />
-                  <p className="px-3 pb-2 pt-1 text-xs font-black uppercase tracking-widest text-gold">
-                    {g.caption}
-                  </p>
-                </DialogContent>
-              </Dialog>
-            ))}
-          </div>
+                      <p className="px-3 pb-2 text-xs text-white/60">{g.note}</p>
+                    </DialogContent>
+                  </Dialog>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="border-gold/50 bg-white/10 text-white hover:bg-white/20" />
+            <CarouselNext className="border-gold/50 bg-white/10 text-white hover:bg-white/20" />
+          </Carousel>
+
+          {/* Dynamic widget: tabbed tournament notes */}
+          <Tabs defaultValue="format" className="mt-14">
+            <TabsList className="bg-white/10 text-white">
+              <TabsTrigger value="format">Format</TabsTrigger>
+              <TabsTrigger value="squad">Squad</TabsTrigger>
+              <TabsTrigger value="takeaways">Takeaways</TabsTrigger>
+            </TabsList>
+            <TabsContent
+              value="format"
+              className="mt-4 rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md"
+            >
+              <p className="text-sm text-white/85">
+                Invitational group-stage tournament played over a weekend, short halves and rolling
+                substitutions.
+              </p>
+            </TabsContent>
+            <TabsContent
+              value="squad"
+              className="mt-4 rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md"
+            >
+              <p className="text-sm text-white/85">
+                A mixed travelling squad drawn from our age groups, with everyone getting minutes.
+              </p>
+            </TabsContent>
+            <TabsContent
+              value="takeaways"
+              className="mt-4 rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md"
+            >
+              <p className="text-sm text-white/85">
+                Sharper first touch under pressure and calmer decisions in tight areas — the next block
+                of sessions is built around it.
+              </p>
+            </TabsContent>
+          </Tabs>
         </div>
       </section>
 
-      {/* GROUND / SETUP */}
-      <section className="mx-auto max-w-7xl px-4 py-20 md:px-6">
-        <div className="grid gap-10 lg:grid-cols-3 lg:items-center">
+      {/* ACADEMY GROUND (placeholder — content coming) */}
+      <section id="ground" className="mx-auto max-w-7xl px-4 py-20 md:px-6 scroll-mt-24">
+        <div className="grid gap-10 lg:grid-cols-3">
           <div>
             <Badge className="mb-4 bg-primary/10 text-primary hover:bg-primary/15 uppercase tracking-widest">
-              Where we train
+              Academy ground
             </Badge>
             <h2 className="font-display text-4xl uppercase leading-[0.95] md:text-5xl">
-              One good ground is enough.
+              Our own ground.
             </h2>
-            <p className="mt-4 text-muted-foreground font-medium">
-              We train on a full grass pitch with proper goals and space for small-sided work. Simple
-              setup, well used — cones, balls, bibs and a session that starts on time.
+            <p className="mt-4 font-medium text-muted-foreground">
+              This section is reserved for the Devsheel academy ground — photos, pitch details and
+              session timings. Content coming soon.
             </p>
-            <Button asChild className="mt-6 rounded-full">
+
+            <div className="mt-6 flex flex-wrap gap-2">
+              {[
+                { icon: MapPin, label: "Location — TBA" },
+                { icon: Ruler, label: "Pitch size — TBA" },
+                { icon: Goal, label: "Goals — TBA" },
+                { icon: Clock, label: "Timings — TBA" },
+              ].map(({ icon: Icon, label }) => (
+                <Tooltip key={label}>
+                  <TooltipTrigger asChild>
+                    <span className="inline-flex cursor-default items-center gap-1.5 rounded-full border border-dashed border-border bg-secondary/40 px-3 py-1.5 text-[11px] font-bold uppercase tracking-widest text-muted-foreground">
+                      <Icon className="h-3.5 w-3.5" /> {label}
+                    </span>
+                  </TooltipTrigger>
+                  <TooltipContent>To be filled in once details are confirmed.</TooltipContent>
+                </Tooltip>
+              ))}
+            </div>
+
+            <Button asChild variant="outline" className="mt-6 rounded-full">
               <Link to="/contact">
-                Come and see a session <ArrowRight className="ml-2 h-4 w-4" />
+                Ask about the ground <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
           </div>
-          <div className="grid grid-cols-2 gap-4 lg:col-span-2">
-            <img
-              src={sessionGround}
-              alt="Devsheel training session on the grass pitch"
-              className="col-span-2 aspect-[16/9] w-full rounded-2xl object-cover shadow-lift"
-            />
-            <img
-              src={runningPair}
-              alt="Two Devsheel players running during a match"
-              className="aspect-square w-full rounded-2xl object-cover shadow-lift"
-            />
-            <img
-              src={playerKit}
-              alt="Player wearing the Devsheel academy kit"
-              className="aspect-square w-full rounded-2xl object-cover shadow-lift"
-            />
+
+          <div className="lg:col-span-2">
+            <Card className="overflow-hidden border-dashed">
+              <CardContent className="p-6">
+                <div className="flex items-center gap-3">
+                  <div className="grid h-11 w-11 place-items-center rounded-xl bg-primary/10 text-primary">
+                    <Construction className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <p className="font-display text-xl uppercase">Photos coming soon</p>
+                    <p className="text-xs text-muted-foreground">
+                      Placeholders below — replace with real ground photos.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-6 grid grid-cols-2 gap-4">
+                  <Skeleton className="col-span-2 aspect-[16/9] w-full rounded-2xl" />
+                  <Skeleton className="aspect-square w-full rounded-2xl" />
+                  <Skeleton className="aspect-square w-full rounded-2xl" />
+                </div>
+
+                <Accordion type="single" collapsible className="mt-6">
+                  <AccordionItem value="a">
+                    <AccordionTrigger className="text-sm uppercase tracking-widest">
+                      Facilities
+                    </AccordionTrigger>
+                    <AccordionContent className="text-sm text-muted-foreground">
+                      Details to be added.
+                    </AccordionContent>
+                  </AccordionItem>
+                  <AccordionItem value="b">
+                    <AccordionTrigger className="text-sm uppercase tracking-widest">
+                      Getting there
+                    </AccordionTrigger>
+                    <AccordionContent className="text-sm text-muted-foreground">
+                      Directions and map to be added.
+                    </AccordionContent>
+                  </AccordionItem>
+                  <AccordionItem value="c">
+                    <AccordionTrigger className="text-sm uppercase tracking-widest">
+                      Session timings
+                    </AccordionTrigger>
+                    <AccordionContent className="text-sm text-muted-foreground">
+                      Weekly schedule to be added.
+                    </AccordionContent>
+                  </AccordionItem>
+                </Accordion>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
+
     </>
   );
 }
