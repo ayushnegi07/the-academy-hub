@@ -1,9 +1,39 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Heart, Compass, Users, Trophy, ArrowRight } from "lucide-react";
+import {
+  Heart,
+  Compass,
+  Users,
+  Trophy,
+  ArrowRight,
+  MapPin,
+  Clock,
+  Ruler,
+  Goal,
+  Camera,
+  Info,
+  Construction,
+} from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Skeleton } from "@/components/ui/skeleton";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import {
   Dialog,
   DialogContent,
@@ -16,6 +46,7 @@ import duelBall from "@/assets/duel-ball.jpg";
 import runningPair from "@/assets/running-pair.jpg";
 import sessionGround from "@/assets/session-ground.jpg";
 import playerKit from "@/assets/player-kit.jpg";
+
 
 export const Route = createFileRoute("/about")({
   head: () => ({
