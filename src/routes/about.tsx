@@ -69,13 +69,39 @@ export const Route = createFileRoute("/about")({
   component: AboutPage,
 });
 
-const gallery = [
-  { src: matchWide, alt: "Devsheel players in a match on the main ground", caption: "Match day on the main ground" },
-  { src: duelBall, alt: "Two players contesting the ball mid-air", caption: "Duels — every ball is competed for" },
-  { src: runningPair, alt: "Two young players running side by side", caption: "Pressing and recovery runs" },
-  { src: sessionGround, alt: "Training session with several balls in play", caption: "Small-group technical work" },
-  { src: playerKit, alt: "Player in Devsheel academy kit during a session", caption: "The Devsheel kit" },
+const tournamentPhotos = [
+  {
+    src: matchWide,
+    alt: "Devsheel players lining up during a tournament match",
+    caption: "Tournament match day",
+    note: "An away tournament we travelled to — not our home ground.",
+  },
+  {
+    src: duelBall,
+    alt: "Two players contesting the ball mid-air at a tournament",
+    caption: "Contesting every ball",
+    note: "Aerial duels against an older, stronger side.",
+  },
+  {
+    src: runningPair,
+    alt: "Two Devsheel players running side by side at a tournament",
+    caption: "Pressing in pairs",
+    note: "Recovery runs after losing the ball high up the pitch.",
+  },
+  {
+    src: sessionGround,
+    alt: "Warm-up before a tournament fixture",
+    caption: "Pre-match warm-up",
+    note: "Rondo and activation work before kick-off.",
+  },
+  {
+    src: playerKit,
+    alt: "Player in Devsheel kit at the tournament",
+    caption: "In Devsheel colours",
+    note: "First outing in the academy kit.",
+  },
 ];
+
 
 function AboutPage() {
   return (
